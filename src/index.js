@@ -1,3 +1,3 @@
-const Syringe = require('syringe');
+const Syringe = require('./syringe');
 
 module.exports = Syringe;
