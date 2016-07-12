@@ -1,0 +1,24 @@
+sudo: required
+dist: trusty
+
+
+notifications:
+  slack: teambold:MhS6rpDz7q5CRcSSk7xFwlTI
+
+
+cache:
+  - apt
+
+language: node_js
+node_js:
+  - "4.3.1"
+
+script:
+  - gulp
+
+deploy:
+  provider: npm
+  email: "ops@gobold.com"
+  api_key: "55d56a15-bc7b-463b-927c-0352353bbcfc"
+  on:
+    tags: true
