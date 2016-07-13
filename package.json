@@ -1,6 +1,6 @@
 {
   "name": "syrinj",
-  "version": "1.0.6",
+  "version": "1.0.8",
   "description": "don't do drugs",
   "main": "dist/index.js",
   "access": "public",
