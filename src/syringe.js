@@ -47,7 +47,9 @@ Syringe.prototype.inject = function(name, service) {
 
 // Return a promise that is fullfilled when all services are ready
 Syringe.prototype.ready = function() {
-  return Promise.all(this.servicePromises);
+  return Promise.all(this.servicePromises).then(() => {
+    return Promise.resolve(this.services);
+  });
 };
 
 module.exports = Syringe;
