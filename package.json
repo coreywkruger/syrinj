@@ -1,6 +1,6 @@
 {
   "name": "syringe",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "don't do drugs",
   "main": "dist/index.js",
   "scripts": {
