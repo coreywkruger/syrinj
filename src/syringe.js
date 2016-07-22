@@ -9,8 +9,14 @@ Syringe.prototype.inject = function(name, service) {
   // Create promise so we can later determine if the injector is ready
   var servicePromises = new Promise((resolve, reject) => {
 
+    if(!name){
+      reject(new Error('Cannot inject service without a name'));
+    }
+    if(!service){
+      reject(new Error('Cannot set ' + name + ' to undefined'));
+    }
     if (this.services[name]) {
-      reject(new Error(name + ' already is defined'));
+      reject(new Error('Service ' + name + ' is already defined'));
     }
 
     if(service.then && service.catch){
@@ -22,14 +28,14 @@ Syringe.prototype.inject = function(name, service) {
           return Promise.resolve(result);
         })
         .catch(err => {
-          err.message = name + ' failed to resolve. ' + err.message;
+          err.message = 'Service ' + name + ' failed to resolve. ' + err.message;
           reject(err);
           return Promise.reject(err);
         });
     } else if (typeof service === 'function') {
       service((err, result) => {
         if (err) {
-          err.message = name + ' failed to resolve. ' + err.message;
+          err.message = 'Service ' + name + ' failed to resolve. ' + err.message;
           reject(err);
         }
         // Set service
